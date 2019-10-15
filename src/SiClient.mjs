@@ -12,7 +12,7 @@ import isfun from 'wsemi/src/isfun.mjs'
  * 建立SocketIO使用者(Node.js與Browser)端物件
  *
  * @param {Object} opt 輸入設定參數物件
- * @param {String} [opt.url='http://localhost:8080'] 輸入SocketIO伺服器ws網址，預設為'http://localhost:8080'
+ * @param {String} [opt.url='http://localhost:8080'] 輸入SocketIO伺服器網址，預設為'http://localhost:8080'
  * @param {String} [opt.token='*'] 輸入使用者認證用token，預設為'*'
  * @param {Function} opt.open 輸入監聽open函數
  * @param {Function} opt.close 輸入監聽close函數

@@ -265,7 +265,7 @@ function SiServer(opt) {
         client.on('disconnect', function(msg) {
             //console.log('disconnect', client.id, msg)
 
-            //刪除ws
+            //刪除client
             clients = clients.filter(function(id) {
                 return id !== client.id
             })
