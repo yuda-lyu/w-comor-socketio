@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw">
+
+    <head>
+        <meta http-equiv="content-type" content="text/html charset=UTF-8" />
+        <title>socket.io</title>
+
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@babel/polyfill/dist/polyfill.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/wsemi/dist/wsemi.umd.js"></script>
+        
+        <script src="dist/si-client.umd.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/w-jsonview-tree/dist/w-jsonview-tree.umd.js"></script>
+        <script>
+            let jv=window['w-jsonview-tree']
+            function logData(title,data){
+                let id='c'+wsemi.genID()
+                let s='<div style="margin:10px;"><div style="display:inline-block; vertical-align:top; margin-right:5px; color:#62f;">'+title+'</div><div id="'+id+'" style="display:inline-block; vertical-align:top;"></div></div>'
+                document.querySelector('body').insertAdjacentHTML('beforeend', s)
+                let ele=document.querySelector('#'+id)
+                if(data){
+                    if(wsemi.isnum(data)){
+                        ele.innerHTML=data
+                    }
+                    else{
+                        jv(data, ele, {expanded:true})
+                        ele.style.marginTop='-4px'
+                    }
+                }
+            }
+        </script>
+        
+        <script>
+
+            //opt
+            let opt = {
+                url: 'http://localhost:8080',
+                token: '*',
+                open: function() {
+                    logData('client web: open')
+                },
+                close: function() {
+                    logData('client web: close')
+                },
+                error: function(err) {
+                    logData('client web: error:', err)
+                },
+                reconn: function() {
+                    logData('client web: reconn')
+                },
+            }
+
+            //SiClient
+            let SiClient = window['si-client']
+            new SiClient(opt)
+                .then(function(wo) {
+                    logData('client web: funcs: ', wo)
+
+                    function core(ps) {
+                        wo.group.plus(ps)
+                            .then(function(r) {
+                                logData('client web: plus(' + JSON.stringify(ps) + ') = ', r)
+                            })
+                            .catch(function(err) {
+                                logData('client web: plus: catch: ', err)
+                            })
+                        wo.group.div(ps)
+                            .then(function(r) {
+                                logData('client web: div(' + JSON.stringify(ps) + ') = ', r)
+                            })
+                            .catch(function(err) {
+                                logData('client web: div: catch: ', err)
+                            })
+                        wo.add(ps)
+                            .then(function(r) {
+                                logData('client web: add(' + JSON.stringify(ps) + ') = ', r)
+                            })
+                            .catch(function(err) {
+                                logData('client web: add: catch: ', err)
+                            })
+                        wo.minu(ps)
+                            .then(function(r) {
+                                logData('client web: minu(' + JSON.stringify(ps) + ') = ', r)
+                            })
+                            .catch(function(err) {
+                                logData('client web: minu: catch: ', err)
+                            })
+                    }
+
+                    let i = 100
+                    setInterval(function() {
+                        i += 1
+                        core({
+                            p1: i,
+                            p2: 10,
+                        })
+                    }, 1000)
+
+                })
+                .catch(function(err) {
+                    logData('client web: catch: ', err)
+                })
+    
+        </script>
+
+    </head>
+
+    <body>
+    </body>
+
+</html>
