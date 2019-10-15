@@ -113,16 +113,6 @@ function SiServer(opt) {
     }
 
 
-    //server
-    let server = Hapi.server({
-        port: opt.port,
-        //host: 'localhost',
-        routes: {
-            cors: true
-        },
-    })
-
-
     //authenticate
     function authenticate(token) {
         let pm = genPm()
@@ -139,8 +129,37 @@ function SiServer(opt) {
     }
 
 
+    //server
+    let server
+    if (opt.serverHapi) {
+
+        //use serverHapi
+        server = opt.serverHapi
+
+    }
+    else {
+
+        //create server
+        server = Hapi.server({
+            port: opt.port,
+            //host: 'localhost',
+            routes: {
+                cors: true
+            },
+        })
+
+    }
+
+
     //io
-    let io = SocketIO(server.listener)
+    let io = null
+    try {
+        io = SocketIO(server.listener)
+    }
+    catch (err) {
+        console.log(`create SocketIO catch:`, err)
+        return null
+    }
 
 
     //connect
@@ -218,7 +237,7 @@ function SiServer(opt) {
             try {
                 client.send(JSON.stringify(data), function(err) {
                     if (err) {
-                        console.log(`Server: send output error: ${err}`)
+                        console.log(`Server: send output error:`, err)
                     }
                 })
             }
@@ -260,27 +279,30 @@ function SiServer(opt) {
     })
 
 
-    //api
-    let api = [
-        {
-            method: 'GET',
-            path: '/{file*}',
-            handler: {
-                directory: {
-                    path: './'
+    async function createServer() {
+
+        if (!opt.serverHapi) {
+
+            //register inert
+            await server.register(Inert)
+
+            //api
+            let api = [
+                {
+                    method: 'GET',
+                    path: '/{file*}',
+                    handler: {
+                        directory: {
+                            path: './'
+                        }
+                    },
                 }
-            },
+            ]
+
+            //route
+            server.route(api)
+
         }
-    ]
-
-
-    async function newServer() {
-
-        //register inert
-        await server.register(Inert)
-
-        //route
-        server.route(api)
 
         //start
         await server.start()
@@ -288,21 +310,7 @@ function SiServer(opt) {
         console.log(`Server running at: ${server.info.uri}`)
 
     }
-
-
-    //serverHapi
-    if (opt.serverHapi) {
-
-        //add route
-        opt.serverHapi.route(api)
-
-    }
-    else {
-
-        //newServer
-        newServer()
-
-    }
+    createServer()
 
 
 }
