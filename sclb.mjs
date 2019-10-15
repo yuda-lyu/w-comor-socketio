@@ -25,17 +25,17 @@ new SiClient(opt)
         function core(ps) {
             wo.group.plus(ps)
                 .then(function(r) {
-                    console.log('client nodejs[port:8080]: plus(' + JSON.stringify(ps) + ')=' + r)
+                    console.log('client nodejs[port:8081]: plus(' + JSON.stringify(ps) + ')=' + r)
                 })
                 .catch(function(err) {
-                    console.log('client nodejs[port:8080]: plus: catch: ', err)
+                    console.log('client nodejs[port:8081]: plus: catch: ', err)
                 })
             wo.group.div(ps)
                 .then(function(r) {
-                    console.log('client nodejs[port:8080]: div(' + JSON.stringify(ps) + ')=' + r)
+                    console.log('client nodejs[port:8081]: div(' + JSON.stringify(ps) + ')=' + r)
                 })
                 .catch(function(err) {
-                    console.log('client nodejs[port:8080]: div: catch: ', err)
+                    console.log('client nodejs[port:8081]: div: catch: ', err)
                 })
             wo.add(ps)
                 .then(function(r) {

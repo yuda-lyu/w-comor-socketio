@@ -181,7 +181,7 @@ new SiClient(opt)
 ```
 [Necessary] Add script for si-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.1/dist/si-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.2/dist/si-client.umd.js"></script>
 ```
 #### Example for `si-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/web.html)]

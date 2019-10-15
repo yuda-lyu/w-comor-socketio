@@ -114,23 +114,14 @@ function SiClient(opt) {
         }
 
 
-        //socket.io, 網址傳token參數作為識別使用者
+        //socket.io-client
         try {
-            ioc = new SocketIOClient(opt.url)
+            ioc = SocketIOClient(opt.url)
         }
         catch (err) {
-            //reconn()
-            console.log('new SocketIOClient error', err)
+            console.log('create SocketIOClient error', err)
             return null
         }
-        // console.log('ioc', ioc)
-
-
-        // //check
-        // if (get(ioc, 'error')) {
-        //     //reconn()
-        //     return null
-        // }
 
 
         //execFunction
@@ -179,83 +170,84 @@ function SiClient(opt) {
         }
 
 
-        //reconnect
-        ioc.on('reconnect', function() {
-            if (isfun(opt.reconn)) {
-                opt.reconn()
-            }
-        })
-
-
         //connect
-        ioc.on('connect', function() {
-
-            //open
+        function fConnect() {
             if (isfun(opt.open)) {
                 opt.open()
             }
             execFunction('getFuncs', null)
+        }
+        ioc.on('connect', fConnect)
 
-            //fMessage
-            function fMessage(message) {
 
-                //data
-                let data = j2o(message)
+        //fMessage
+        function fMessage(message) {
 
-                //get sys funcs
-                if (get(data, 'output.sys') === 'sys' && get(data, 'output.funcs')) {
+            //data
+            let data = j2o(message)
 
-                    //funcs
-                    let funcs = data['output']['funcs']
+            //get sys funcs
+            if (get(data, 'output.sys') === 'sys' && get(data, 'output.funcs')) {
 
-                    //clear wo
-                    wo = {}
+                //funcs
+                let funcs = data['output']['funcs']
 
-                    //bind funcs
-                    for (let i = 0; i < funcs.length; i++) {
+                //clear wo
+                wo = {}
 
-                        //func
-                        let func = funcs[i]
+                //bind funcs
+                for (let i = 0; i < funcs.length; i++) {
 
-                        //add func
-                        let f = function(input) {
-                            return execFunction(func, input)
-                        }
-                        set(wo, func, f)
+                    //func
+                    let func = funcs[i]
 
+                    //add func
+                    let f = function(input) {
+                        return execFunction(func, input)
                     }
-
-                    //resolve
-                    pm.resolve(wo)
+                    set(wo, func, f)
 
                 }
 
-                //get result
-                if (get(data, '_id') && get(data, 'output')) {
-
-                    //_id
-                    let _id = get(data, '_id')
-
-                    //output
-                    let output = get(data, 'output')
-
-                    //emit
-                    ev.emit(_id, output)
-
-                }
+                //resolve
+                pm.resolve(wo)
 
             }
-            ioc.on('message', fMessage)
 
-            //fClose
-            function fClose() {
-                if (isfun(opt.close)) {
-                    opt.close()
-                }
+            //get result
+            if (get(data, '_id') && get(data, 'output')) {
+
+                //_id
+                let _id = get(data, '_id')
+
+                //output
+                let output = get(data, 'output')
+
+                //emit
+                ev.emit(_id, output)
+
             }
-            ioc.on('disconnect', fClose)
 
-        })
+        }
+        ioc.on('message', fMessage)
+
+
+        //fClose
+        function fClose() {
+            if (isfun(opt.close)) {
+                opt.close()
+            }
+        }
+        ioc.on('disconnect', fClose)
+
+
+        //fReconnect
+        function fReconnect() {
+            if (isfun(opt.reconn)) {
+                opt.reconn()
+            }
+        }
+        ioc.on('reconnect', fReconnect)
 
 
         //fError
