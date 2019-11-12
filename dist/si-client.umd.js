@@ -1,5 +1,5 @@
 /*!
- * si-client v1.0.3
+ * si-client v1.0.4
  * (c) 2018-2019 yuda-lyu(semisphere)
  * Released under the MIT License.
  */
