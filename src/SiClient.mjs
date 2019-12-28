@@ -14,6 +14,7 @@ import isfun from 'wsemi/src/isfun.mjs'
  * @param {Object} opt 輸入設定參數物件
  * @param {String} [opt.url='http://localhost:8080'] 輸入SocketIO伺服器網址，預設為'http://localhost:8080'
  * @param {String} [opt.token='*'] 輸入使用者認證用token，預設為'*'
+ * @param {Object} [opt.ioSettings={}] 輸入SocketIO初始化設定物件，預設為{}
  * @param {Function} opt.open 輸入監聽open函數
  * @param {Function} opt.close 輸入監聽close函數
  * @param {Function} opt.error 輸入監聽error函數
@@ -112,11 +113,14 @@ function SiClient(opt) {
         if (!opt.token) {
             opt.token = '*'
         }
+        if (!opt.ioSettings) {
+            opt.ioSettings = {}
+        }
 
 
         //socket.io-client
         try {
-            ioc = SocketIOClient(opt.url)
+            ioc = new SocketIOClient(opt.url, opt.ioSettings)
         }
         catch (err) {
             console.log('create SocketIOClient error', err)
