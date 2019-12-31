@@ -2,10 +2,9 @@ import Hapi from '@hapi/hapi'
 import Inert from '@hapi/inert' //提供靜態檔案
 import SocketIO from 'socket.io'
 import keys from 'lodash/keys'
+import get from 'lodash/get'
 import genPm from 'wsemi/src/genPm.mjs'
 import haskey from 'wsemi/src/haskey.mjs'
-import getdtvstr from 'wsemi/src/getdtvstr.mjs'
-import getdtv from 'wsemi/src/getdtv.mjs'
 import j2o from 'wsemi/src/j2o.mjs'
 import isfun from 'wsemi/src/isfun.mjs'
 import arrhas from 'wsemi/src/arrhas.mjs'
@@ -22,7 +21,7 @@ import arrhas from 'wsemi/src/arrhas.mjs'
  * @param {Array} [opt.routes=[]] 輸入伺服器額外掛載routes陣列，預設[]
  * @example
  *
- * import SiServer from 'w-comor-socketio/dist/si-server.umd.js'
+ * import WComorSocketioServer from 'w-comor-socketio/dist/w-comor-socketio-server.umd.js'
  *
  * function random(min, max) {
  *     return Math.floor(Math.random() * max) + min
@@ -89,10 +88,10 @@ import arrhas from 'wsemi/src/arrhas.mjs'
  *     },
  * }
  *
- * new SiServer(opt)
+ * new WComorSocketioServer(opt)
  *
  */
-function SiServer(opt) {
+function WComorSocketioServer(opt) {
 
 
     //default
@@ -175,7 +174,7 @@ function SiServer(opt) {
             //console.log('execFunction', client.id, data)
 
             //token
-            let token = getdtvstr(data, 'token')
+            let token = get(data, 'token', '')
 
             //vd
             let vd = await authenticate(token)
@@ -184,10 +183,10 @@ function SiServer(opt) {
             if (vd) {
 
                 //func
-                let func = getdtvstr(data, 'func')
+                let func = get(data, 'func', '')
 
                 //input
-                let input = getdtv(data, 'input')
+                let input = get(data, 'input')
 
                 //getFuncs
                 if (func === 'getFuncs') {
@@ -311,4 +310,4 @@ function SiServer(opt) {
 }
 
 
-export default SiServer
+export default WComorSocketioServer

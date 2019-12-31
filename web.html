@@ -9,7 +9,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/wsemi/dist/wsemi.umd.js"></script>
         
-        <script src="dist/si-client.umd.js"></script>
+        <script src="dist/w-comor-socketio-client.umd.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/w-consolelog/dist/w-consolelog.umd.js"></script>
         <script>
@@ -36,9 +36,9 @@
                 },
             }
 
-            //SiClient
-            let SiClient = window['si-client']
-            new SiClient(opt)
+            //WComorSocketioClient
+            let WComorSocketioClient = window['w-comor-socketio-client']
+            new WComorSocketioClient(opt)
                 .then(function(wo) {
                     logData('client web: funcs: ', wo)
 

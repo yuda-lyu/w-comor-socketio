@@ -1,5 +1,5 @@
-import SiServer from './src/SiServer.mjs'
-//import SiServer from './dist/si-server.umd.js'
+import WComorSocketioServer from './src/WComorSocketioServer.mjs'
+//import WComorSocketioServer from './dist/w-comor-socketio-server.umd.js'
 
 function random(min, max) {
     return Math.floor(Math.random() * max) + min
@@ -70,7 +70,7 @@ function getOpt(port) {
 
 
 let opt = getOpt(8080)
-new SiServer(opt)
+new WComorSocketioServer(opt)
 
 let opt2 = getOpt(8081)
-new SiServer(opt2)
+new WComorSocketioServer(opt2)

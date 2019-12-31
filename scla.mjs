@@ -1,5 +1,5 @@
-import SiClient from './src/SiClient.mjs'
-//import SiClient from './dist/si-client.umd.js'
+import WComorSocketioClient from './src/WComorSocketioClient.mjs'
+//import WComorSocketioClient from './dist/w-comor-socketio-client.umd.js'
 
 let opt = {
     url: 'http://localhost:8080',
@@ -18,7 +18,7 @@ let opt = {
     },
 }
 
-new SiClient(opt)
+new WComorSocketioClient(opt)
     .then(function(wo) {
         console.log('client nodejs[port:8080]: funcs: ', wo)
 

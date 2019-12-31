@@ -5,7 +5,7 @@ A http and websocket communicator in nodejs and browser. Mapping functions from 
 [![npm version](http://img.shields.io/npm/v/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
 [![Build Status](https://travis-ci.org/yuda-lyu/w-comor-socketio.svg?branch=master)](https://travis-ci.org/yuda-lyu/w-comor-socketio) 
 [![license](https://img.shields.io/npm/l/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
-[![gzip file size](http://img.badgesize.io/yuda-lyu/w-comor-socketio/master/dist/si-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-comor-socketio)
+[![gzip file size](http://img.badgesize.io/yuda-lyu/w-comor-socketio/master/dist/w-comor-socketio-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-comor-socketio)
 [![npm download](https://img.shields.io/npm/dt/w-comor-socketio.svg)](https://npmjs.org/package/w-comor-socketio) 
 [![jsdelivr download](https://img.shields.io/jsdelivr/npm/hm/w-comor-socketio.svg)](https://www.jsdelivr.com/package/npm/w-comor-socketio)
 
@@ -14,22 +14,22 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 
 ## Parts
 `w-comor-socketio` includes 2 parts: 
-* `si-server`: for nodejs server
-* `si-client`: for nodejs and browser client
+* `w-comor-socketio-server`: for nodejs server
+* `w-comor-socketio-client`: for nodejs and browser client
 
 ## Installation
 ### Using npm(ES6 module):
-> **Note:** `si-server` depends on `@hapi/hapi`, `@hapi/inert` and `socket.io`.
+> **Note:** `w-comor-socketio-server` depends on `@hapi/hapi`, `@hapi/inert` and `socket.io`.
 
-> **Note:** `si-client` depends on `socket.io-client` and `wolfy87-eventemitter`.
+> **Note:** `w-comor-socketio-client` depends on `socket.io-client` and `wolfy87-eventemitter`.
 
 ```alias
 npm i w-comor-socketio
 ```
-#### Example for `si-server`:
+#### Example for `w-comor-socketio-server`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/srv.mjs)]
 ```alias
-import SiServer from 'w-comor-socketio/dist/si-server.umd.js'
+import WComorSocketioServer from 'w-comor-socketio/dist/w-comor-socketio-server.umd.js'
 
 function random(min, max) {
     return Math.floor(Math.random() * max) + min
@@ -96,12 +96,12 @@ let opt = {
     },
 }
 
-new SiServer(opt)
+new WComorSocketioServer(opt)
 ```
-#### Example for `si-client`:
+#### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/scla.mjs)]
 ```alias
-import SiClient from 'w-comor-socketio/dist/si-client.umd.js'
+import WComorSocketioClient from 'w-comor-socketio/dist/w-comor-socketio-client.umd.js'
 
 //opt
 let opt = {
@@ -121,8 +121,8 @@ let opt = {
     },
 }
 
-//SiClient
-new SiClient(opt)
+//WComorSocketioClient
+new WComorSocketioClient(opt)
     .then(function(wo) {
         console.log('client nodejs: funcs: ', wo)
         
@@ -173,17 +173,17 @@ new SiClient(opt)
 ```
 
 ### In a browser(UMD module):
-> **Note:** `si-client` does't depend on any package in browser.
+> **Note:** `w-comor-socketio-client` does't depend on any package in browser.
 
 [Optional] Add script with nomodule for IE11.
 ```alias
 <script nomodule src="https://cdn.jsdelivr.net/npm/@babel/polyfill/dist/polyfill.min.js"></script>
 ```
-[Necessary] Add script for si-client.
+[Necessary] Add script for w-comor-socketio-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.6/dist/si-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.7/dist/w-comor-socketio-client.umd.js"></script>
 ```
-#### Example for `si-client`:
+#### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/web.html)]
 ```alias
 //opt
@@ -204,9 +204,9 @@ let opt = {
     },
 }
 
-//SiClient
-let SiClient = window['si-client']
-new SiClient(opt)
+//WComorSocketioClient
+let WComorSocketioClient = window['w-comor-socketio-client']
+new WComorSocketioClient(opt)
     .then(function(wo) {
         console.log('client web: funcs: ', wo)
         
