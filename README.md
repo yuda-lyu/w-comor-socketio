@@ -21,7 +21,7 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 ### Using npm(ES6 module):
 > **Note:** `w-comor-socketio-server` depends on `@hapi/hapi`, `@hapi/inert` and `socket.io`.
 
-> **Note:** `w-comor-socketio-client` depends on `socket.io-client` and `wolfy87-eventemitter`.
+> **Note:** `w-comor-socketio-client` depends on `socket.io-client`.
 
 ```alias
 npm i w-comor-socketio
@@ -181,7 +181,7 @@ new WComorSocketioClient(opt)
 ```
 [Necessary] Add script for w-comor-socketio-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.8/dist/w-comor-socketio-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.9/dist/w-comor-socketio-client.umd.js"></script>
 ```
 #### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/web.html)]

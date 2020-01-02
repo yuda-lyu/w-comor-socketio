@@ -1,5 +1,5 @@
 /*!
- * w-comor-socketio-server v1.0.8
+ * w-comor-socketio-server v1.0.9
  * (c) 2018-2019 yuda-lyu(semisphere)
  * Released under the MIT License.
  */
