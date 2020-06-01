@@ -181,7 +181,7 @@ new WComorSocketioClient(opt)
 ```
 [Necessary] Add script for w-comor-socketio-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.10/dist/w-comor-socketio-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.11/dist/w-comor-socketio-client.umd.js"></script>
 ```
 #### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/web.html)]
