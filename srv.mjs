@@ -74,3 +74,5 @@ new WComorSocketioServer(opt)
 
 let opt2 = getOpt(8081)
 new WComorSocketioServer(opt2)
+
+//node --experimental-modules --es-module-specifier-resolution=node srv.mjs

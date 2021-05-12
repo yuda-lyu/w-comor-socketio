@@ -19,9 +19,9 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 
 ## Installation
 ### Using npm(ES6 module):
-> **Note:** `w-comor-socketio-server` depends on `@hapi/hapi`, `@hapi/inert` and `socket.io`.
+> **Note:** `w-comor-socketio-server` is mainly dependent on `@hapi/hapi`, `@hapi/inert` and `socket.io`.
 
-> **Note:** `w-comor-socketio-client` depends on `socket.io-client`.
+> **Note:** `w-comor-socketio-client` is mainly dependent on `socket.io-client`.
 
 ```alias
 npm i w-comor-socketio
