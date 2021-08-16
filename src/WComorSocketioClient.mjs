@@ -114,7 +114,7 @@ function WComorSocketioClient(opt) {
             opt.token = '*'
         }
         if (!opt.ioSettings) {
-            opt.ioSettings = {}
+            opt.ioSettings = {} //若伺服器有反向代理, 得設定{ path: '反向代理子路徑' }, 例如'/HLW/SSO/'
         }
 
 
