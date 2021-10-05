@@ -1,13 +1,13 @@
 import Hapi from '@hapi/hapi'
 import Inert from '@hapi/inert' //提供靜態檔案
-import SocketIO from 'socket.io'
+import { Server } from 'socket.io'
 import keys from 'lodash/keys'
 import get from 'lodash/get'
 import genPm from 'wsemi/src/genPm.mjs'
 import haskey from 'wsemi/src/haskey.mjs'
 import j2o from 'wsemi/src/j2o.mjs'
 import isfun from 'wsemi/src/isfun.mjs'
-import arrhas from 'wsemi/src/arrhas.mjs'
+import arrHas from 'wsemi/src/arrHas.mjs'
 
 
 /**
@@ -148,7 +148,7 @@ function WComorSocketioServer(opt) {
     //io
     let io = null
     try {
-        io = SocketIO(server.listener)
+        io = new Server(server.listener)
     }
     catch (err) {
         console.log(`create SocketIO catch:`, err)
@@ -200,7 +200,7 @@ function WComorSocketioServer(opt) {
 
                 }
                 //call
-                else if (arrhas(funcs, func)) {
+                else if (arrHas(funcs, func)) {
 
                     //call func in opt.funcs
                     let output = await opt['funcs'][func](input)
