@@ -10,6 +10,9 @@ import isfun from 'wsemi/src/isfun.mjs'
 import arrHas from 'wsemi/src/arrHas.mjs'
 
 
+let SocketIO = Server
+
+
 /**
  * 建立socket.io伺服器
  *
@@ -148,7 +151,7 @@ function WComorSocketioServer(opt) {
     //io
     let io = null
     try {
-        io = new Server(server.listener)
+        io = new SocketIO(server.listener)
     }
     catch (err) {
         console.log(`create SocketIO catch:`, err)
