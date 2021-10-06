@@ -3,7 +3,6 @@ A http and websocket communicator in nodejs and browser. Mapping functions from 
 
 ![language](https://img.shields.io/badge/language-JavaScript-orange.svg) 
 [![npm version](http://img.shields.io/npm/v/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
-[![Build Status](https://travis-ci.org/yuda-lyu/w-comor-socketio.svg?branch=master)](https://travis-ci.org/yuda-lyu/w-comor-socketio) 
 [![license](https://img.shields.io/npm/l/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
 [![gzip file size](http://img.badgesize.io/yuda-lyu/w-comor-socketio/master/dist/w-comor-socketio-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-comor-socketio)
 [![npm download](https://img.shields.io/npm/dt/w-comor-socketio.svg)](https://npmjs.org/package/w-comor-socketio) 
