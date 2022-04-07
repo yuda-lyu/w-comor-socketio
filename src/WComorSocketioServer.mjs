@@ -7,6 +7,9 @@ import genPm from 'wsemi/src/genPm.mjs'
 import haskey from 'wsemi/src/haskey.mjs'
 import j2o from 'wsemi/src/j2o.mjs'
 import isfun from 'wsemi/src/isfun.mjs'
+import ispint from 'wsemi/src/ispint.mjs'
+import isestr from 'wsemi/src/isestr.mjs'
+import cint from 'wsemi/src/cint.mjs'
 import arrHas from 'wsemi/src/arrHas.mjs'
 
 
@@ -19,6 +22,7 @@ let SocketIO = Server
  * @param {Object} opt 輸入設定參數物件
  * @param {Object} [opt.serverHapi={}] 輸入hapi伺服器物件，若提供，本服務將自動加入api至route。使用外部hapi伺服器時，需開啟跨域功能，或是使用nginx反向代理轉入api請求
  * @param {Integer} [opt.port=8080] 輸入hapi與socket.io伺服器所在port，為hapi與socket.io共用，預設8080
+ * @param {String} [opt.pathPolling=undefined] 輸入socket.io伺服器無法使用WebSocket連線自動降級成為輪詢(polling)所在子目錄字串，預設undefined，代表使用'/socket.io'
  * @param {Function} opt.authenticate 輸入使用者身份認證函數，供伺服器端驗證之用，函數會傳入使用者端連線之token參數，回傳為Promise，resolve(true)為驗證通過，resolve(false)為驗證不通過
  * @param {Object} [opt.funcs={}] 輸入伺服器端供使用者端呼叫之函數物件，各key為函數名稱，對應value為函數本體。各函數之輸入需為單一物件，而各函數回傳皆為Promise，可通過resolve與reject回傳結果，預設{}
  * @param {Array} [opt.routes=[]] 輸入伺服器額外掛載routes陣列，預設[]
@@ -97,10 +101,16 @@ let SocketIO = Server
 function WComorSocketioServer(opt) {
 
 
-    //default
-    if (!opt.port) {
-        opt.port = 8080
+    //port
+    let port = get(opt, 'port')
+    if (!ispint(port)) {
+        port = 8080
     }
+    port = cint(port)
+
+
+    //pathPolling
+    let pathPolling = get(opt, 'pathPolling')
 
 
     //funcs
@@ -150,8 +160,12 @@ function WComorSocketioServer(opt) {
 
     //io
     let io = null
+    let ioOpt = {}
+    if (isestr(pathPolling)) {
+        ioOpt = { path: pathPolling }
+    }
     try {
-        io = new SocketIO(server.listener)
+        io = new SocketIO(server.listener, ioOpt)
     }
     catch (err) {
         console.log(`create SocketIO catch:`, err)
@@ -285,15 +299,43 @@ function WComorSocketioServer(opt) {
 
             //api
             let api = [
+                // {
+                //     method: 'GET',
+                //     path: '/{file*}',
+                //     handler: {
+                //         directory: {
+                //             path: './'
+                //         },
+                //     },
+                // },
+                //預設僅提供測試之3檔案
                 {
                     method: 'GET',
-                    path: '/{file*}',
+                    path: '/web.html',
                     handler: {
-                        directory: {
-                            path: './'
-                        }
+                        file: {
+                            path: './web.html'
+                        },
                     },
-                }
+                },
+                {
+                    method: 'GET',
+                    path: '/dist/w-comor-socketio-client.umd.js',
+                    handler: {
+                        file: {
+                            path: './dist/w-comor-socketio-client.umd.js'
+                        },
+                    },
+                },
+                {
+                    method: 'GET',
+                    path: '/dist/w-comor-socketio-client.umd.js.map',
+                    handler: {
+                        file: {
+                            path: './dist/w-comor-socketio-client.umd.js.map'
+                        },
+                    },
+                },
             ]
 
             //route
