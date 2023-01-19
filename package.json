@@ -1,18 +1,17 @@
 {
   "name": "w-comor-socketio",
-  "version": "1.0.14",
-  "description": "A http and websocket communicator in nodejs and browser. Mapping functions from nodejs to other end points, like a simple RPC.",
+  "version": "1.0.15",
   "main": "dist/w-comor-socketio-server.umd.js",
   "dependencies": {
     "lodash": "^4.17.21",
-    "@hapi/hapi": "^20.2.1",
-    "@hapi/inert": "^6.0.5",
-    "socket.io": "^4.4.1",
-    "socket.io-client": "^4.4.1",
-    "wsemi": "^1.6.54"
+    "@hapi/hapi": "^21.2.0",
+    "@hapi/inert": "^7.0.0",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+    "wsemi": "^1.6.87"
   },
   "devDependencies": {
-    "w-package-tools": "^1.0.65"
+    "w-package-tools": "^1.0.66"
   },
   "scripts": {
     "test": "mocha --parallel --timeout 60000 --experimental-modules --es-module-specifier-resolution=node",
@@ -34,9 +33,5 @@
     "RPC"
   ],
   "author": "yuda-lyu(semisphere)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yuda-lyu/w-comor-socketio/issues"
-  },
-  "homepage": "https://github.com/yuda-lyu/w-comor-socketio#readme"
+  "license": "MIT"
 }
