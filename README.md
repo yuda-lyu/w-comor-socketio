@@ -6,6 +6,7 @@ A http and websocket communicator in nodejs and browser. Mapping functions from 
 [![license](https://img.shields.io/npm/l/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
 [![gzip file size](http://img.badgesize.io/yuda-lyu/w-comor-socketio/master/dist/w-comor-socketio-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-comor-socketio)
 [![npm download](https://img.shields.io/npm/dt/w-comor-socketio.svg)](https://npmjs.org/package/w-comor-socketio) 
+[![npm download](https://img.shields.io/npm/dm/w-comor-socketio.svg)](https://npmjs.org/package/w-comor-socketio) 
 [![jsdelivr download](https://img.shields.io/jsdelivr/npm/hm/w-comor-socketio.svg)](https://www.jsdelivr.com/package/npm/w-comor-socketio)
 
 ## Documentation
@@ -180,7 +181,7 @@ new WComorSocketioClient(opt)
 ```
 [Necessary] Add script for w-comor-socketio-client.
 ```alias
-<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.16/dist/w-comor-socketio-client.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.17/dist/w-comor-socketio-client.umd.js"></script>
 ```
 #### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/web.html)]
