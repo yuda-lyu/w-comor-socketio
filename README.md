@@ -4,7 +4,6 @@ A http and websocket communicator in nodejs and browser. Mapping functions from 
 ![language](https://img.shields.io/badge/language-JavaScript-orange.svg) 
 [![npm version](http://img.shields.io/npm/v/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
 [![license](https://img.shields.io/npm/l/w-comor-socketio.svg?style=flat)](https://npmjs.org/package/w-comor-socketio) 
-[![gzip file size](http://img.badgesize.io/yuda-lyu/w-comor-socketio/master/dist/w-comor-socketio-server.umd.js.svg?compression=gzip)](https://github.com/yuda-lyu/w-comor-socketio)
 [![npm download](https://img.shields.io/npm/dt/w-comor-socketio.svg)](https://npmjs.org/package/w-comor-socketio) 
 [![npm download](https://img.shields.io/npm/dm/w-comor-socketio.svg)](https://npmjs.org/package/w-comor-socketio) 
 [![jsdelivr download](https://img.shields.io/jsdelivr/npm/hm/w-comor-socketio.svg)](https://www.jsdelivr.com/package/npm/w-comor-socketio)
@@ -18,14 +17,12 @@ To view documentation or get support, visit [docs](https://yuda-lyu.github.io/w-
 * `w-comor-socketio-client`: for nodejs and browser client
 
 ## Installation
+
 ### Using npm(ES6 module):
-> **Note:** `w-comor-socketio-server` is mainly dependent on `@hapi/hapi`, `@hapi/inert` and `socket.io`.
-
-> **Note:** `w-comor-socketio-client` is mainly dependent on `socket.io-client`.
-
 ```alias
 npm i w-comor-socketio
 ```
+
 #### Example for `w-comor-socketio-server`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/srv.mjs)]
 ```alias
@@ -98,6 +95,7 @@ let opt = {
 
 new WComorSocketioServer(opt)
 ```
+
 #### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/scla.mjs)]
 ```alias
@@ -173,16 +171,12 @@ new WComorSocketioClient(opt)
 ```
 
 ### In a browser(UMD module):
-> **Note:** `w-comor-socketio-client` does't depend on any package in browser.
 
-[Optional] Add script with nomodule for IE11.
-```alias
-<script nomodule src="https://cdn.jsdelivr.net/npm/@babel/polyfill/dist/polyfill.min.js"></script>
-```
-[Necessary] Add script for w-comor-socketio-client.
+Add script for w-comor-socketio-client.
 ```alias
 <script src="https://cdn.jsdelivr.net/npm/w-comor-socketio@1.0.18/dist/w-comor-socketio-client.umd.js"></script>
 ```
+
 #### Example for `w-comor-socketio-client`:
 > **Link:** [[dev source code](https://github.com/yuda-lyu/w-comor-socketio/blob/master/web.html)]
 ```alias

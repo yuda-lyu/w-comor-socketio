@@ -67,4 +67,4 @@ new WComorSocketioClient(opt)
         console.log('client nodejs[port:8080]: catch: ', err)
     })
 
-//node --experimental-modules --es-module-specifier-resolution=node scla.mjs
+//node scla.mjs
