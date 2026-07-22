@@ -1,17 +1,17 @@
 {
   "name": "w-comor-socketio",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "dist/w-comor-socketio-server.umd.js",
   "dependencies": {
     "@hapi/hapi": "^21.3.7",
     "@hapi/inert": "^7.1.0",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "^4.18.1",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
-    "wsemi": "^1.7.49"
+    "wsemi": "^1.8.66"
   },
   "devDependencies": {
-    "w-package-tools": "^1.0.75"
+    "w-package-tools": "^1.1.11"
   },
   "scripts": {
     "test": "mocha --parallel --timeout 60000",
