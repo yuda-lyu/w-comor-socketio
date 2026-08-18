@@ -1,5 +1,5 @@
 /*!
- * w-comor-socketio-client v1.0.25
+ * w-comor-socketio-client v1.0.26
  * (c) 2018-2021 yuda-lyu(semisphere)
  * Released under the MIT License.
  */
