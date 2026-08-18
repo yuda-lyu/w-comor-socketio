@@ -1,13 +1,13 @@
 {
   "name": "w-comor-socketio",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "main": "dist/w-comor-socketio-server.umd.js",
   "dependencies": {
     "@hapi/hapi": "^21.3.7",
     "@hapi/inert": "^7.1.0",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
-    "wsemi": "^1.8.70"
+    "wsemi": "^1.8.73"
   },
   "devDependencies": {
     "w-package-tools": "^1.1.12"
